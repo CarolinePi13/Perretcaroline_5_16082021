@@ -1,0 +1,38 @@
+@import "../node_modules/bootstrap/scss/bootstrap";
+$color-primary: rgba(22, 20, 18, 1);
+$color-tertiary: rgba(199, 189, 177, 1);
+$color-seccondary: rgba(221, 217, 214, 1);
+
+.navbar-collapse {
+  justify-content: flex-end;
+}
+footer {
+  background-color: $color-primary;
+  padding: 2%;
+
+  ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+  }
+  a {
+    text-decoration: none;
+    color: white;
+  }
+}
+.navbar-dark {
+  background-color: $color-primary;
+}
+body {
+  background-color: $color-seccondary;
+}
+.card {
+  border-radius: 15px;
+}
+
+.card-img-top {
+  border-radius: 15px 15px 0 0;
+}
+.photo-change:hover {
+}
+/* Color Theme Swatches in RGBA */

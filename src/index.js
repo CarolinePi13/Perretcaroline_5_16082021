@@ -15,28 +15,20 @@ const displayArticle = async () => {
             str = str + i;
           }
     }
-   document.body.innerHTML += articleData.map
+   document.getElementById("card-contain").innerHTML += articleData.map
     (
         (article) =>
             `
-     
-            <div class="card" style="width: 40rem;">
-            <img src="${article.imageUrl}" class="card-img-top" alt="image de ${article.name}">
+            
+            <div class="col">
+            <div class="card">
+            <img src="${article.imageUrl}" class="card-img-top photo-change" alt="image de ${article.name}">
             <div class="card-body">
-              <h2 class="card-title">${article.name}</h2>
-              <label for="pet-select">Choose a pet:</label>
-
-            <select name="vernis" id="pet-select">
-                <option value="">--Choisissez une option--</option>
-                <option value="${article.lenses[0]}">${article.lenses[0]}</option>
-                <option value="${article.lenses[1]}">${article.lenses[1]}</option>
-                <option value="${article.lenses[2]}">${article.lenses[2]}</option>
-                
-            </select>
-                        
+              <h2 class="card-title">${article.name}</h2>        
               <p class=${article.description}</p><p>${(article.price/ 100)}.00 $</p>
-              <a href="#" class="btn btn-primary">Consulter</a>
+             \<a href="#" class="btn btn-primary">Consulter</a>
             </div>
+          </div>
           </div>
           
     `).join(' ');
@@ -44,3 +36,13 @@ const displayArticle = async () => {
 };
 
 displayArticle();
+
+{/* <label for="pet-select">Choose a pet:</label>
+
+<select name="vernis" id="pet-select">
+    <option value="">--Choisissez une option--</option>
+    <option value="${article.lenses[0]}">${article.lenses[0]}</option>
+    <option value="${article.lenses[1]}">${article.lenses[1]}</option>
+    <option value="${article.lenses[2]}">${article.lenses[2]}</option>
+    
+</select> */}
