@@ -11146,6 +11146,12 @@ body {
   border-radius: 15px 15px 0 0;
 }
 
-/* Color Theme Swatches in RGBA */
+#panier {
+  font-size: 1.5rem;
+}
+
+.nav-link {
+  font-size: 1.5rem;
+}
 
 /*# sourceMappingURL=style.css.map */

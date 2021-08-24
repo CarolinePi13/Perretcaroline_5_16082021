@@ -1,21 +1,19 @@
 let articleData = [];
 
 
-const fetchArticle = async () => {
+
+const fetchArticles = async () => {
     await fetch('http://localhost:3000/api/cameras')
         .then((res) => res.json())
         .then((data) => articleData = (data));
-
+    
 };
 
-const displayArticle = async () => {
-    await fetchArticle();
-    const dispalyOption = () => {
-        for (let i = 0; i < article.lenses.length ; i++) {
-            str = str + i;
-          }
-    }
-   document.getElementById("card-contain").innerHTML += articleData.map
+const displayArticles = async () => {
+    await fetchArticles();
+    
+   
+   const allItems = articleData.map
     (
         (article) =>
             `
@@ -26,23 +24,15 @@ const displayArticle = async () => {
             <div class="card-body">
               <h2 class="card-title">${article.name}</h2>        
               <p class=${article.description}</p><p>${(article.price/ 100)}.00 $</p>
-             \<a href="#" class="btn btn-primary">Consulter</a>
+             <a href="./article.html?${article._id}" data-index-number=${article._id} class="btn btn-primary stretched-link" id="link-to-article">Consulter</a>
             </div>
           </div>
           </div>
           
     `).join(' ');
-    
+    document.getElementById("card-contain").innerHTML += allItems
 };
 
-displayArticle();
-
-{/* <label for="pet-select">Choose a pet:</label>
-
-<select name="vernis" id="pet-select">
-    <option value="">--Choisissez une option--</option>
-    <option value="${article.lenses[0]}">${article.lenses[0]}</option>
-    <option value="${article.lenses[1]}">${article.lenses[1]}</option>
-    <option value="${article.lenses[2]}">${article.lenses[2]}</option>
-    
-</select> */}
+displayArticles();
+//  const GoToSingleArticlePage =
+//  ()=>{document.getElementById("link-to-article").addEventListener("click", )},

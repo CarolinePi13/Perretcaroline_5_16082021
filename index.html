@@ -10,29 +10,59 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Style+Script&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="./style.css">
-    <title>Document</title>
+    <script src="https://kit.fontawesome.com/d50d217fe0.js" crossorigin="anonymous"></script>
+    <title>Orinoco</title>
 </head>
 
 <body>
-            <a href="article.html">article</a>
+            
     <header>
-        <nav>
-            <li>Shop</li>
-            <li>Mon panier</li>
-        </nav>
-        <div class="hero">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#"></i>Orinoco</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="index.html">Shop</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="panier" href="./Panier.html"><i class="fas fa-shopping-cart"></i></a>
+                  </li>
+               
+                </ul>
+              </div>
+            </div>
+          </nav>
+    
+        <div class="container my-5 text-center">
          <h1>Appareils photos Vintage</h1>
-         <p>Succombez pour ces appareils photos au look vintage avec toute la performance d'un appareil phot moderne de pointe.</p>
+         <p>Succombez pour ces appareils photos vintages </p>
         </div>
     </header>
         <main>
+            <div class="container">
+            <div class="row row-cols-1 row-cols-md-2 g-4" id="card-contain">
 
+            </div>
+            </div>
+            <div id="single-article"></div>
+        </main>
 
+        <footer class="mt-5">
+            <ul>
+                <li><a href="#">Conditions Générales de vente</a></li>
+                <li><a href="#">Nous contacter</a></li>
+                <li><a href="#">Mentions légales</a></li>
+            </ul>
 
-    </main>
+        </footer>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="./dist/polyfill.bundle.js"></script>
-    <script src="./dist/app.bundle.js"></script>
+    <!-- <script src="./dist/polyfill.bundle.js"></script> -->
+    <script src="./src/index.js"></script>
 </body>
 
 </html>
