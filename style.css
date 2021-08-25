@@ -11112,8 +11112,32 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+body {
+  background-color: #ddd9d6;
+}
+
 .navbar-collapse {
   justify-content: flex-end;
+}
+
+.navbar-dark {
+  background-color: #161412;
+}
+
+.nav-link {
+  font-size: 1.5rem;
+}
+
+#panier {
+  font-size: 1.5rem;
+}
+
+.card {
+  border-radius: 15px;
+}
+
+.card-img-top {
+  border-radius: 15px 15px 0 0;
 }
 
 footer {
@@ -11130,28 +11154,17 @@ footer a {
   color: white;
 }
 
-.navbar-dark {
-  background-color: #161412;
-}
-
-body {
-  background-color: #ddd9d6;
-}
-
-.card {
+#submit {
   border-radius: 15px;
+  display: block;
+  width: 200px;
+  height: 40px;
+  margin: 20px;
 }
 
-.card-img-top {
-  border-radius: 15px 15px 0 0;
-}
-
-#panier {
-  font-size: 1.5rem;
-}
-
-.nav-link {
-  font-size: 1.5rem;
+.btn {
+  display: flex;
+  justify-content: center;
 }
 
 /*# sourceMappingURL=style.css.map */

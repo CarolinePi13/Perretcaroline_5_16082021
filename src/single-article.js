@@ -1,11 +1,9 @@
 //Recuperation de l'url
 
 const objectUrl= window.location.search;
-console.log(objectUrl);
-
 const articleId = objectUrl.slice(1);
-console.log(articleId);
 
+// recuperation des donnees de l'article
 let articleData = [];
 
 const fetchSingleArticle = async () => {
@@ -14,48 +12,74 @@ const fetchSingleArticle = async () => {
         .then((data) => articleData = (data));
 };
 
+//affichage des options
 
-    
-
-
-const DisplaySingleArticle = async () => {
-    await fetchSingleArticle();
-   
-   let articleOnPage =
-                        `
-                        
-                        <div class="col">
-                        <div class="card">
-                        <img src="${articleData.imageUrl}" class="card-img-top photo-change" alt="image de ${articleData.name}">
-                        <div class="card-body">
-                          <h2 class="card-title">${articleData.name}</h2>        
-                          <p class=${articleData.description}</p><p>${(articleData.price/ 100)}.00 $</p>
-                          <label for="pet-select">Choose a lense:</label>
-                            <select name="vernis" id="lense-select">
-                                <option value="">--Choisissez une option--</option>
-                                <option value="${articleData.lenses[0]}">${articleData.lenses[0]}</option>
-                                <option value="${articleData.lenses[1]}">${articleData.lenses[1]}</option>
-                                <option value="${articleData.lenses[2]}">${articleData.lenses[2]}</option>
+//affichage de l'article
+const displaySingleArticle = async () => {
+    await fetchSingleArticle()
+   .then (() =>{
+          let articleOnPage =
+                                  `
+                                  
+                                  <div class="col">
+                                  <div class="card">
+                                  <img src="${articleData.imageUrl}" class="card-img-top photo-change" alt="image de ${articleData.name}">
+                                  <div class="card-body">
+                                    <h2 class="card-title">${articleData.name}</h2>        
+                                    <p class=>${articleData.description}</p><p>${(articleData.price/ 100)}.00 $</p>
+                                    <label for="pet-select">Choose a lense:</label>
+                                      <select name="vernis" id="lense-select">
+                                          <option value="">--Choisissez une option--</option>
+                                    </select> 
+                                    
+                                </div>
+                              </div>
+                                </div>
                                 
-                          </select> 
-                          
-                       </div>
-                     </div>
-                      </div>
-                      
-             `;
-         document.getElementById("single-article").innerHTML= articleOnPage;
+                      `
+                      let singleArticle=document.getElementById("single-article");
+                      singleArticle.innerHTML= articleOnPage;
+
+   })
+        .then (()=>{
+           let lenses = articleData.lenses;
+        for(let lense of lenses){
+                let option=document.createElement("option");
+                document.getElementById("lense-select").appendChild(option);
+                option.textContent =lense;
+              }
+              
+        })      
+       
 };
-        
-     
+       
+displaySingleArticle();
+// recuperer les donnees
+const addToCart = async() =>{
+  await displaySingleArticle();
+ 
+    document.getElementById("submit").addEventListener("click", (event)=>{
+   event.preventDefault();
+   let articleAdded={
+    IdArticle: articleData._id,
+    NameArticle: articleData.name,
+    PriceArticle:articleData.price/100
+  }
+  console.log(articleAdded);
+ 
 
+// ajouter au local storage
+let articleToLocalStorage = JSON.parse(localStorage.getItem('produit'));
+console.log(articleToLocalStorage.length);
 
- DisplaySingleArticle();
-//  const GoToSingleArticlePage =
-//  ()=>{document.getElementById("link-to-article").addEventListener("click", )},
-
-
-
-//  document.getElementById("link-topage").addEventListener("click", )
-
-
+if(articleToLocalStorage.length>0){
+  articleToLocalStorage.push(articleAdded);
+  localStorage.setItem("produit", JSON.stringify(articleToLocalStorage));
+}else{
+  articleToLocalStorage= [];
+  articleToLocalStorage.push(articleAdded);
+  localStorage.setItem("produit", JSON.stringify(articleToLocalStorage));
+}
+});
+}
+addToCart();
