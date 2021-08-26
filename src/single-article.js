@@ -61,25 +61,30 @@ const addToCart = async() =>{
     document.getElementById("submit").addEventListener("click", (event)=>{
    event.preventDefault();
    let articleAdded={
+    ImgArticle: articleData.imageUrl,
     IdArticle: articleData._id,
     NameArticle: articleData.name,
-    PriceArticle:articleData.price/100
+    PriceArticle:articleData.price/100 + "$"
   }
-  console.log(articleAdded);
+  
  
 
 // ajouter au local storage
 let articleToLocalStorage = JSON.parse(localStorage.getItem('produit'));
-console.log(articleToLocalStorage.length);
+console.log(articleToLocalStorage);
 
-if(articleToLocalStorage.length>0){
+if(articleToLocalStorage){
+  
   articleToLocalStorage.push(articleAdded);
   localStorage.setItem("produit", JSON.stringify(articleToLocalStorage));
-}else{
-  articleToLocalStorage= [];
+}
+else{
+  articleToLocalStorage=[];
   articleToLocalStorage.push(articleAdded);
   localStorage.setItem("produit", JSON.stringify(articleToLocalStorage));
 }
 });
 }
 addToCart();
+
+//alert panier incremente et icone sur panier

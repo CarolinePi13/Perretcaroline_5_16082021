@@ -11116,8 +11116,13 @@ body {
   background-color: #ddd9d6;
 }
 
+a {
+  text-decoration: none;
+}
+
 .navbar-collapse {
   justify-content: flex-end;
+  padding-right: 2%;
 }
 
 .navbar-dark {
@@ -11150,21 +11155,38 @@ footer ul {
   flex-direction: column;
 }
 footer a {
-  text-decoration: none;
   color: white;
 }
 
 #submit {
   border-radius: 15px;
   display: block;
-  width: 200px;
-  height: 40px;
+  width: 300px;
+  height: 60px;
   margin: 20px;
+  font-size: 1.2rem;
+  background-color: #161412;
+  color: white;
+  font-weight: bold;
+}
+
+.btn-sub {
+  display: flex;
+  justify-content: center;
 }
 
 .btn {
-  display: flex;
-  justify-content: center;
+  background-color: #161412;
+  color: white;
+  border: none;
+}
+
+#suppress-btn {
+  border: none;
+  background-color: white;
+}
+#suppress-btn i {
+  font-size: 1.5rem;
 }
 
 /*# sourceMappingURL=style.css.map */

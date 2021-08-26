@@ -6,8 +6,12 @@ $color-seccondary: rgba(221, 217, 214, 1);
 body {
   background-color: $color-seccondary;
 }
+a {
+  text-decoration: none;
+}
 .navbar-collapse {
   justify-content: flex-end;
+  padding-right: 2%;
 }
 .navbar-dark {
   background-color: $color-primary;
@@ -15,6 +19,7 @@ body {
 .nav-link {
   font-size: 1.5rem;
 }
+
 #panier {
   font-size: 1.5rem;
 }
@@ -23,8 +28,6 @@ body {
 }
 .card-img-top {
   border-radius: 15px 15px 0 0;
-}
-.photo-change:hover {
 }
 
 footer {
@@ -37,7 +40,6 @@ footer {
     flex-direction: column;
   }
   a {
-    text-decoration: none;
     color: white;
   }
 }
@@ -45,11 +47,27 @@ footer {
 #submit {
   border-radius: 15px;
   display: block;
-  width: 200px;
-  height: 40px;
+  width: 300px;
+  height: 60px;
   margin: 20px;
+  font-size: 1.2rem;
+  background-color: $color-primary;
+  color: white;
+  font-weight: bold;
 }
-.btn {
+.btn-sub {
   display: flex;
   justify-content: center;
+}
+.btn {
+  background-color: $color-primary;
+  color: white;
+  border: none;
+}
+#suppress-btn {
+  border: none;
+  background-color: white;
+  i {
+    font-size: 1.5rem;
+  }
 }
