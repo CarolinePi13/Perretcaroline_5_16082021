@@ -31,7 +31,7 @@ const addStorageToPage =()=>{
           <div class="card-body">
             <h5 class="card-title">${Item.NameArticle}</h5>
             
-            <p class="card-text"><small class="text-muted">Prix:${Item.PriceArticle}</small></p>
+            <p class="card-text"><small class="text-muted">Prix : ${Item.PriceArticle}</small></p>
             <button type="reset" value="suppress" class="suppress-btn"><i class="fas fa-times"></i></button>
           </div>
         </div>
@@ -60,16 +60,19 @@ const getAllPrices = ()=>{
 }
 getAllPrices();
 // display le prix final
+const displayNewTotal = ()=>{
+  getAllPrices();
 let displayTotalPrice = getAllPrices();
 console.log(displayTotalPrice);
 document.querySelector(".total-produit").innerText = `
-Total commande: ${displayTotalPrice} $
+Total commande : ${displayTotalPrice}.00 $
 
-`;
+`};
+displayNewTotal();
 //supprimer un article
 const removeArticleFromCart = ()=>{
     let deleteBtn =document.querySelectorAll('.suppress-btn');
-     for (let i=0; 1<deleteBtn.length; i++){
+     for (let i= 0; 0<deleteBtn.length; i++){
             deleteBtn[i].addEventListener("click",(e)=>{ 
            let selectedArticle=basketItems[i];
            const remove=basketItems.filter(elmt => elmt !== selectedArticle);
@@ -77,12 +80,13 @@ const removeArticleFromCart = ()=>{
            addStorageToPage();
            localStorage.setItem("produit", JSON.stringify(basketItems));
            removeArticleFromCart();
-
            
         }
        );
-       
+       displayNewTotal();
     }
+    document.getElementById("panier").innerHTML = `<p class="empty-cart text-center">Votre panier est vide</p>`;
+    displayNewTotal();
 }
 removeArticleFromCart();
 

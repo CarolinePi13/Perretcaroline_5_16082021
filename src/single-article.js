@@ -65,7 +65,7 @@ const addToCart = async() =>{
     ImgArticle: articleData.imageUrl,
     IdArticle: articleData._id,
     NameArticle: articleData.name,
-    PriceArticle:articleData.price/100 + "$"
+    PriceArticle:articleData.price/100 + ".00 $"
   }
 
 // ajouter au local storage
