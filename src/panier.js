@@ -2,9 +2,9 @@
 
 const allStorage=() =>{
 
-    let values = [],
-        keys = Object.keys(localStorage),
-        i = keys.length;
+    let values = [];
+    let keys = Object.keys(localStorage);
+    let i = keys.length;
 
     while ( i-- ) {
         values.push( localStorage.getItem(keys[i]) );
@@ -20,7 +20,7 @@ let basketItems=allStorage();
 //ajouter les donnees sur la page
 const addStorageToPage =()=>{
 
-    const allBasketItems = basketItems.map(
+    const allCartItems = basketItems.map(
         (Item)=>`
 
         <div class="row gx-5">
@@ -32,14 +32,14 @@ const addStorageToPage =()=>{
             <h5 class="card-title">${Item.NameArticle}</h5>
             
             <p class="card-text"><small class="text-muted">Prix:${Item.PriceArticle}</small></p>
-            <button type="reset" value="suppress" id="suppress-btn"><i class="fas fa-times"></i></button>
+            <button type="reset" value="suppress" class="suppress-btn"><i class="fas fa-times"></i></button>
           </div>
         </div>
       </div>
 
         `
     ).join(' ');
-    document.getElementById("panier").innerHTML = allBasketItems;
+    document.getElementById("panier").innerHTML = allCartItems;
     
 }
 allStorage();
@@ -67,6 +67,22 @@ Total commande: ${displayTotalPrice} $
 
 `;
 //supprimer un article
+const removeArticleFromCart = ()=>{
+    let deleteBtn =document.querySelectorAll('.suppress-btn');
+     for (let i=0; 1<deleteBtn.length; i++){
+            deleteBtn[i].addEventListener("click",(e)=>{
+           let selectArticleId=basketItems[i];
+           const remove=basketItems.filter(elmt => elmt !== selectArticleId);
+           basketItems=remove;
+           addStorageToPage();
+           localStorage.setItem("produit", JSON.stringify(basketItems));
+           removeArticleFromCart();
+        }
+       );
+       getAllPrices(); 
+    }
+}
+removeArticleFromCart();
 
 //envoyer les donnees du formulaire et les produits
 

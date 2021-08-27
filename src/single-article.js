@@ -28,7 +28,7 @@ const displaySingleArticle = async () => {
                                     <h2 class="card-title">${articleData.name}</h2>        
                                     <p class=>${articleData.description}</p><p>${(articleData.price/ 100)}.00 $</p>
                                     <label for="pet-select">Choose a lense:</label>
-                                      <select name="vernis" id="lense-select">
+                                    <select name="vernis" class="lense-select">
                                           <option value="">--Choisissez une option--</option>
                                     </select> 
                                     
@@ -42,10 +42,11 @@ const displaySingleArticle = async () => {
 
    })
         .then (()=>{
-           let lenses = articleData.lenses;
+           const lenses = articleData.lenses;
         for(let lense of lenses){
                 let option=document.createElement("option");
-                document.getElementById("lense-select").appendChild(option);
+                let lenseSelect=document.querySelector(".lense-select")
+                lenseSelect.appendChild(option);
                 option.textContent =lense;
               }
               
@@ -66,10 +67,9 @@ const addToCart = async() =>{
     NameArticle: articleData.name,
     PriceArticle:articleData.price/100 + "$"
   }
-  
- 
 
 // ajouter au local storage
+
 let articleToLocalStorage = JSON.parse(localStorage.getItem('produit'));
 console.log(articleToLocalStorage);
 

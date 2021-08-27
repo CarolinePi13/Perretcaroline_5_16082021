@@ -11181,11 +11181,11 @@ footer a {
   border: none;
 }
 
-#suppress-btn {
+.suppress-btn {
   border: none;
   background-color: white;
 }
-#suppress-btn i {
+.suppress-btn i {
   font-size: 1.5rem;
 }
 

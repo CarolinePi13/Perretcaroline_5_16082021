@@ -24,7 +24,7 @@ const displayArticles = async () => {
             <div class="card-body">
               <h2 class="card-title">${article.name}</h2>        
               <p>${(article.price/ 100)}.00 $</p>
-             <a href="./article.html?${article._id}" data-index-number=${article._id} class="btn btn-primary stretched-link" id="link-to-article">Consulter</a>
+             <a href="./article.html?${article._id}" data-index-number=${article._id} class="btn btn-primary stretched-link" class="link-to-article">Consulter</a>
             </div>
           </div>
           </div>
