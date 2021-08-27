@@ -58,6 +58,9 @@ footer {
 .btn-sub {
   display: flex;
   justify-content: center;
+  &:active {
+    transform: scale(0.8);
+  }
 }
 .btn {
   background-color: $color-primary;

@@ -70,16 +70,18 @@ Total commande: ${displayTotalPrice} $
 const removeArticleFromCart = ()=>{
     let deleteBtn =document.querySelectorAll('.suppress-btn');
      for (let i=0; 1<deleteBtn.length; i++){
-            deleteBtn[i].addEventListener("click",(e)=>{
-           let selectArticleId=basketItems[i];
-           const remove=basketItems.filter(elmt => elmt !== selectArticleId);
+            deleteBtn[i].addEventListener("click",(e)=>{ 
+           let selectedArticle=basketItems[i];
+           const remove=basketItems.filter(elmt => elmt !== selectedArticle);
            basketItems=remove;
            addStorageToPage();
            localStorage.setItem("produit", JSON.stringify(basketItems));
            removeArticleFromCart();
+
+           
         }
        );
-       getAllPrices(); 
+       
     }
 }
 removeArticleFromCart();

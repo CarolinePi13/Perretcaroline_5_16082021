@@ -11174,6 +11174,9 @@ footer a {
   display: flex;
   justify-content: center;
 }
+.btn-sub:active {
+  transform: scale(0.8);
+}
 
 .btn {
   background-color: #161412;

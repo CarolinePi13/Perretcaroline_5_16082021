@@ -60,7 +60,7 @@ const addToCart = async() =>{
   await displaySingleArticle();
  
     document.getElementById("submit").addEventListener("click", (event)=>{
-   event.preventDefault();
+   
    let articleAdded={
     ImgArticle: articleData.imageUrl,
     IdArticle: articleData._id,
