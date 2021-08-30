@@ -13,8 +13,6 @@ const allStorage=() =>{
     return JSON.parse(values);
 }
 
-
-
 let basketItems=allStorage();
 
 //ajouter les donnees sur la page
@@ -32,7 +30,7 @@ const addStorageToPage =()=>{
             <h5 class="card-title">${Item.NameArticle}</h5>
             
             <p class="card-text"><small class="text-muted">Prix : ${Item.PriceArticle}</small></p>
-            <button type="reset" value="suppress" class="suppress-btn"><i class="fas fa-times"></i></button>
+            <button value="suppress" class="suppress-btn"><i class="fas fa-times"></i></button>
           </div>
         </div>
       </div>
@@ -44,52 +42,111 @@ const addStorageToPage =()=>{
 }
 allStorage();
 addStorageToPage();
-// recuperer les prix
-const getAllPrices = ()=>{
-    let allPrices=[];
-    for (let item of basketItems){
-        
-       let price=parseInt(item.PriceArticle);
-       allPrices.push(price);
-       
-    }
-    const reducer=(accumulateur, currentValue) => accumulateur + currentValue;
-    let totalPrice= allPrices.reduce(reducer,0);
-    return totalPrice;
-    
-}
-getAllPrices();
-// display le prix final
-const displayNewTotal = ()=>{
-  getAllPrices();
-let displayTotalPrice = getAllPrices();
-console.log(displayTotalPrice);
-document.querySelector(".total-produit").innerText = `
-Total commande : ${displayTotalPrice}.00 $
 
-`};
-displayNewTotal();
-//supprimer un article
-const removeArticleFromCart = ()=>{
-    let deleteBtn =document.querySelectorAll('.suppress-btn');
-     for (let i= 0; 0<deleteBtn.length; i++){
-            deleteBtn[i].addEventListener("click",(e)=>{ 
-           let selectedArticle=basketItems[i];
-           const remove=basketItems.filter(elmt => elmt !== selectedArticle);
-           basketItems=remove;
-           addStorageToPage();
-           localStorage.setItem("produit", JSON.stringify(basketItems));
-           removeArticleFromCart();
-           
+
+// recuperer les prix
+
+    const getAllPrices = ()=>{
+        let allPrices=[];
+        for (let item of basketItems){
+            
+          let price=parseInt(item.PriceArticle);
+          allPrices.push(price);
+          
         }
-       );
-       displayNewTotal();
+        const reducer=(accumulateur, currentValue) => accumulateur + currentValue;
+        let totalPrice= allPrices.reduce(reducer,0);
+        return totalPrice;
+        
     }
-    document.getElementById("panier").innerHTML = `<p class="empty-cart text-center">Votre panier est vide</p>`;
+    getAllPrices();
+
+
+// display le prix final
+
+      const displayNewTotal = ()=>{
+        getAllPrices();
+      let displayTotalPrice = getAllPrices();
+
+      document.querySelector(".total-produit").innerText = `
+      Total commande : ${displayTotalPrice}.00 $
+
+      `};
+      displayNewTotal();
+
+//supprimer un article
+
+const removeArticleFromCart = async()=>{
+  addStorageToPage();
+
+  let btnsNodeList = document.querySelectorAll('.suppress-btn');
+  let allSupBtns = Array.from(btnsNodeList);
+  
+  for (let i=0; i<allSupBtns.length;i++){
+    allSupBtns[i].addEventListener('click', ()=>{
+      let selectedArticle= basketItems[i];
+      let remove = basketItems.filter(elmt => elmt !== selectedArticle);
+      basketItems=remove;
+      addStorageToPage();
+      removeArticleFromCart();
+      localStorage.setItem("produit", JSON.stringify(basketItems));
+    })
     displayNewTotal();
+   
+  }
+  if(basketItems.length==0){
+    document.getElementById('panier').innerHTML =`<p class="empty-cart text-center">Votre panier est vide</p>`}
+    displayNewTotal(); 
 }
+
 removeArticleFromCart();
 
-//envoyer les donnees du formulaire et les produits
 
-//clear localStorage
+//Recuperer les valeurs du formulaire
+
+
+let firstNameInput= document.getElementById("first-name");
+let lastNameInput= document.getElementById("last-name");
+let emailInput= document.getElementById("inputEmail");
+let adressInput= document.getElementById("inputAddress");
+let cityInput= document.getElementById("inputCity");
+let firstNameMissing= document.getElementById("emptyFirstName");
+
+
+// const validateForm =()=>{
+//   //check if names input are empty
+//   if(firstNameInput.value)
+// }
+
+document.getElementById("send-data").addEventListener("click",(e)=>{
+  e.preventDefault();
+  
+  const valuesForm= {
+    firstName: firstNameInput.value,
+    lastName: lastNameInput.value,
+    email: emailInput.value,
+    adress: adressInput.value,
+    city: cityInput.value
+  }
+
+  validateForm();
+  console.log(valuesForm);
+});
+
+
+//valider les donnees du formulaire
+
+
+
+
+// //envoyer les donnees du formulaire
+// //clear localStorage)
+// document.getElementById("send-data").addEventListener("click", formValidate);
+// (e)=>{
+//   // e.preventDefault();
+//   // localStorage.clear();
+
+// }
+
+
+

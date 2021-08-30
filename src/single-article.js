@@ -51,40 +51,43 @@ const displaySingleArticle = async () => {
               }
               
         })      
-       
+       .catch((err)=> "erreur: " + err);
 };
-       
+      
 displaySingleArticle();
+
+
 // recuperer les donnees
 const addToCart = async() =>{
   await displaySingleArticle();
  
-    document.getElementById("submit").addEventListener("click", (event)=>{
+  document.getElementById("submit").addEventListener("click", (event)=>{
    
-   let articleAdded={
-    ImgArticle: articleData.imageUrl,
-    IdArticle: articleData._id,
-    NameArticle: articleData.name,
-    PriceArticle:articleData.price/100 + ".00 $"
-  }
+    let articleAdded={
+      ImgArticle: articleData.imageUrl,
+      IdArticle: articleData._id,
+      NameArticle: articleData.name,
+      PriceArticle:articleData.price/100 + ".00 $"
+    }
 
-// ajouter au local storage
+  // ajouter au local storage
 
-let articleToLocalStorage = JSON.parse(localStorage.getItem('produit'));
-console.log(articleToLocalStorage);
+    let articleToLocalStorage = JSON.parse(localStorage.getItem('produit'));
+    console.log(articleToLocalStorage);
 
-if(articleToLocalStorage){
-  
-  articleToLocalStorage.push(articleAdded);
-  localStorage.setItem("produit", JSON.stringify(articleToLocalStorage));
-}
-else{
-  articleToLocalStorage=[];
-  articleToLocalStorage.push(articleAdded);
-  localStorage.setItem("produit", JSON.stringify(articleToLocalStorage));
-}
-});
-}
+      if(articleToLocalStorage){
+        
+        articleToLocalStorage.push(articleAdded);
+        localStorage.setItem("produit", JSON.stringify(articleToLocalStorage));
+      }
+      else{
+        articleToLocalStorage=[];
+        articleToLocalStorage.push(articleAdded);
+        localStorage.setItem("produit", JSON.stringify(articleToLocalStorage));
+      }
+  });
+};
+
 addToCart();
 
 //alert panier incremente et icone sur panier
