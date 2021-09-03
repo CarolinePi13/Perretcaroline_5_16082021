@@ -1,14 +1,78 @@
 @import "../node_modules/bootstrap/scss/bootstrap";
 $color-primary: rgba(22, 20, 18, 1);
 $color-tertiary: rgba(199, 189, 177, 1);
-$color-seccondary: rgba(221, 217, 214, 1);
+$color-secondary: rgba(221, 217, 214, 1);
+@font-face {
+  font-family: "belligerent_madnessregular";
+  src: url("belligerentmadness_regular_macroman/belligerent-webfont.eot");
+  src: url("belligerentmadness_regular_macroman/belligerent-webfont.eot?#iefix")
+      format("embedded-opentype"),
+    url("belligerentmadness_regular_macroman/belligerent-webfont.woff")
+      format("woff"),
+    url("belligerentmadness_regular_macroman/belligerent-webfont.ttf")
+      format("truetype"),
+    url("belligerentmadness_regular_macroman/belligerent-webfont.svg#belligerent_madnessregular")
+      format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "latin_modern_mono_light10Bd";
+  src: url("latinmodernmonolight_10bold_macroman/lmmonolt10-bold-webfont.eot");
+  src: url("latinmodernmonolight_10bold_macroman/lmmonolt10-bold-webfont.eot?#iefix")
+      format("embedded-opentype"),
+    url("llatinmodernmonolight_10bold_macroman/mmonolt10-bold-webfont.woff2")
+      format("woff2"),
+    url("latinmodernmonolight_10bold_macroman/lmmonolt10-bold-webfont.ttf")
+      format("truetype"),
+    url("latinmodernmonolight_10bold_macroman/lmmonolt10-bold-webfont.svg#latin_modern_mono_light10Bd")
+      format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+$font-primary: "latin_modern_mono_light10Bd", sans-serif;
+@mixin portable {
+  @media (max-width: 500px) {
+    @content;
+  }
+}
+
+@mixin tablettes {
+  @media (min-width: 660px) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media (min-width: 1020px) {
+    @content;
+  }
+}
+@mixin large-desk {
+  @media (min-width: 1600px) {
+    @content;
+  }
+}
 
 body {
-  background-color: $color-seccondary;
+  background-color: $color-secondary;
 }
 a {
   text-decoration: none;
 }
+
+.pres {
+  font-family: $font-primary;
+  h1 {
+    font-size: 2.5rem;
+    font-family: $font-primary;
+  }
+  p {
+    font-size: 1.5rem;
+    font-family: $font-primary;
+  }
+}
+//-------------------navigation properties-------------------
 .navbar-collapse {
   justify-content: flex-end;
   padding-right: 2%;
@@ -19,31 +83,63 @@ a {
 .nav-link {
   font-size: 1.5rem;
 }
+.navbar-brand {
+  font-family: "belligerent_madnessregular", sans-serif;
+  font-size: 40px;
+  img {
+    height: 50px;
+  }
+}
 
-#panier {
-  font-size: 1.5rem;
+//-------------------cart properties-------------------
+
+#CartTable {
+  font-size: 0.7rem;
+  border-spacing: 5px;
+  text-align: center;
+  @include portable {
+    border-spacing: 5px 20px;
+    img {
+      display: none;
+    }
+  }
+  @include tablettes {
+    font-size: 1rem;
+  }
+}
+.table {
+  background-color: white;
+  border-radius: 15px;
 }
 .card {
   border-radius: 15px;
+  width: 95%;
 }
 .card-img-top {
   border-radius: 15px 15px 0 0;
 }
-
-footer {
-  background-color: $color-primary;
-  padding: 2%;
-
-  ul {
-    list-style-type: none;
-    display: flex;
-    flex-direction: column;
-  }
-  a {
-    color: white;
+tbody {
+  font-size: 1rem;
+  text-align: center;
+  @include tablettes {
+    font-size: 1rem;
   }
 }
-// page Article
+
+.paiement {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#actualiser {
+  width: 30%;
+}
+.img-size {
+  min-width: 50px;
+  max-width: 200px;
+  padding: 5px;
+}
 #submit {
   border-radius: 15px;
   display: block;
@@ -71,54 +167,47 @@ footer {
   border: none;
   background-color: white;
   i {
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
 }
-.navbar-brand {
-  img {
-    height: 100px;
-  }
+.erreur {
+  color: red;
 }
-@font-face {
-  font-family: "belligerent_madnessregular";
-  src: url("belligerentmadness_regular_macroman/belligerent-webfont.eot");
-  src: url("belligerentmadness_regular_macroman/belligerent-webfont.eot?#iefix")
-      format("embedded-opentype"),
-    url("belligerentmadness_regular_macroman/belligerent-webfont.woff")
-      format("woff"),
-    url("belligerentmadness_regular_macroman/belligerent-webfont.ttf")
-      format("truetype"),
-    url("belligerentmadness_regular_macroman/belligerent-webfont.svg#belligerent_madnessregular")
-      format("svg");
-  font-weight: normal;
-  font-style: normal;
+.align-column {
+  display: flex;
+  flex-direction: column;
 }
-@font-face {
-  font-family: "latin_modern_mono_light10Bd";
-  src: url("latinmodernmonolight_10bold_macroman/lmmonolt10-bold-webfont.eot");
-  src: url("latinmodernmonolight_10bold_macroman/lmmonolt10-bold-webfont.eot?#iefix")
-      format("embedded-opentype"),
-    url("latinmodernmonolight_10bold_macroman/lmmonolt10-bold-webfont.woff2")
-      format("woff2"),
-    url("latinmodernmonolight_10bold_macroman/lmmonolt10-bold-webfont.ttf")
-      format("truetype"),
-    url("latinmodernmonolight_10bold_macroman/lmmonolt10-bold-webfont.svg#latin_modern_mono_light10Bd")
-      format("svg");
-  font-weight: normal;
-  font-style: normal;
+.align-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
+.empty-cart {
+  font-size: 1rem;
+  font-weight: bold;
+}
+.fillUP {
+  font-weight: bold;
 
-.navbar-brand {
-  font-family: "belligerent_madnessregular", sans-serif;
-  font-size: 70px;
-}
-$font-primary: "latin_modern_mono_light10Bd", sans-serif;
-.pres {
-  font-family: $font-primary;
-  h1 {
-    font-size: 2.5rem;
-  }
-  p {
-    font-size: 1.5rem;
+  a {
+    background-color: $color-primary;
+    color: white;
+    padding: 5px;
+    border-radius: 10px;
   }
 }
+//-------------------footer properties-------------------
+footer {
+  background-color: $color-primary;
+  padding: 2%;
+
+  ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+  }
+  a {
+    color: white;
+  }
+}
+//-------------------navigation properties-------------------

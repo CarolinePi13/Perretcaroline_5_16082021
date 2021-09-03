@@ -26,10 +26,16 @@ const displaySingleArticle = async () => {
                                   <img src="${articleData.imageUrl}" class="card-img-top photo-change" alt="image de ${articleData.name}">
                                   <div class="card-body">
                                     <h2 class="card-title">${articleData.name}</h2>        
-                                    <p class=>${articleData.description}</p><p>${(articleData.price/ 100)}.00 $</p>
-                                    <label for="pet-select">Choose a lense:</label>
+                                    <p class=>${articleData.description}</p><p>${(articleData.price/ 100)}.00 €</p>
+                                    <label for="quantite-select">Quantité :</label>
+                                    <select name="quantite" id="quantite" 
+                                    <option value="">---</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option></select><br><br>
+                                    <label for="pet-select">Choisissez une lentille: </label>
                                     <select name="vernis" class="lense-select">
-                                          <option value="">--Choisissez une option--</option>
+                                         <option value="">----</option> 
                                     </select> 
                                     
                                 </div>
@@ -61,13 +67,15 @@ displaySingleArticle();
 const addToCart = async() =>{
   await displaySingleArticle();
  
-  document.getElementById("submit").addEventListener("click", (event)=>{
-   
+  document.getElementById("submit").addEventListener("click", ()=>{
+    let amountArticles=  document.getElementById("quantite").value
+    console.log(amountArticles);
     let articleAdded={
       ImgArticle: articleData.imageUrl,
       IdArticle: articleData._id,
       NameArticle: articleData.name,
-      PriceArticle:articleData.price/100 + ".00 $"
+      PriceArticle:articleData.price/100 + ".00",
+      QuantiteArticle: amountArticles
     }
 
   // ajouter au local storage

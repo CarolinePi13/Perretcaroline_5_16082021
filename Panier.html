@@ -54,16 +54,29 @@
     
     </header>
         <main>
-        <div class="container mt-5 ">
-          <div class="row justify-content-center">
-            <div class="card mb-3  pt-2" id="panier" style="max-width: 540px;">
-              <p class="empty-cart text-center">Votre panier est vide</p>
-          </div>
-          </div>
-        </div>
+       <div class="container  table">
          
+         <div class="row  mt-5 p-2">
+        <table id="CartTable" class="table-responsive" >
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">Article</th>
+              <th scope="col">Quantité</th>
+              <th scope="col">Prix de l'article</th>
+              <th scope="col">Prix total</th>
+            </tr>
+            </thead>
+            <tbody id="CartTableBody">
+
+            </tbody>
+
+            
+
+          </table></div></div>
       <div class="paiement text-center">
             <div class="total-produit "></div>
+            <button type="reset" class="btn-sub btn" id="actualiser">Actualiser mon panier</button></div>
             
             
       </div>
@@ -73,47 +86,39 @@
 
 
           <div class="container mt-5">
-            <form class="row g-3 justify-content-center">
+            <form class="row g-3 justify-content-center" id="coordonees">
               
                 <div class="col-md-8">
                   <label for="inputEmail4" class="form-label">Prénom</label>
-                  <input type="text" class="form-control" placeholder="First name" aria-label="First name" id="first-name" min-length= "2" max-length= "30" required>
-                  <span id="emptyFirstName" class="empty"></span>
+                  <input type="text" class="form-control" placeholder="First name" aria-label="First name" name="first-name" min-length= "2" max-length= "20" required>
+                  <span id="erreur-prenom" class="erreur"></span>
                 </div>
                 <div class="col-md-8">
                   <label for="inputEmail4" class="form-label">Nom</label>
-                  <input type="text" class="form-control" placeholder="Last name" aria-label="Last name" id="last-name" min-length= "2" max-length= "30" required>
-                  <span id="emptyFirstName" class="empty">Veuillez renseigner un Nom</span>
+                  <input type="text" class="form-control" placeholder="Last name" aria-label="Last name" name="last-name" min-length= "2" max-length= "30" required>
+                  <span id="erreur-nom" class="erreur"></span>
                 </div>
               
                 <div class="col-md-8">
                   <label for="inputEmail" class="form-label">E-mail</label>
-                  <input type="email" class="form-control" id="inputEmail" placeholder="James@bond.com" required>
-                  <span id="emptyFirstName" class="empty">Veuillez renseigner un E-mail</span>
+                  <input type="email" class="form-control" name="inputEmail" placeholder="James@bond.com" required>
+                  <span id="emptyFirstName" class="erreur"></span>
                 </div>
                 
                 <div class="col-md-8">
                   <label for="inputAddress" class="form-label">Address</label>
-                  <input type="text" class="form-control" id="inputAddress" placeholder="Numero et rue" required>
-                  <span id="emptyFirstName " class="empty">Veuillez renseigner une adresse</span>
+                  <input type="text" class="form-control" name="inputAddress" placeholder="Numero et rue" required>
+                  <span id="emptyFirstName " class="erreur"></span>
                 </div>
                
                 <div class="col-md-8">
                   <label for="inputCity" class="form-label">Ville</label>
-                  <input type="text" class="form-control" id="inputCity" placeholder="ville" required>
-                  <span id="emptyFirstName " class="empty">Veuillez renseigner une ville</span>
+                  <input type="text" class="form-control" name="inputCity" placeholder="ville" required>
+                  <span id="emptyFirstName " class="erreur"></span>
                 </div>
           
-                <div class="col-md-8">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="gridCheck">
-                    <label class="form-check-label" for="gridCheck">
-                      Check me out
-                    </label>
-                  </div>
-                </div>
                 <div class="col-md-8 text-center">
-                  <button type="submit" class="btn btn-primary" id="send-data">Commander</button>
+                  <input type="submit" class="btn btn-primary" value="Commander" name="send-data" id="send-data">
                 </div>
               </form>
             </div>
