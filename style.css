@@ -11261,10 +11261,6 @@ tbody {
   font-size: 1rem;
 }
 
-.erreur {
-  color: red;
-}
-
 .align-column {
   display: flex;
   flex-direction: column;
@@ -11289,6 +11285,22 @@ tbody {
   color: white;
   padding: 5px;
   border-radius: 10px;
+}
+
+.form-control:valid {
+  border-color: #2e2ed6;
+}
+
+.error {
+  border-color: #dd4949;
+}
+
+.erreur-msg {
+  display: none;
+  color: #dd4949;
+}
+.erreur-msg.show {
+  display: block;
 }
 
 footer {

@@ -76,7 +76,7 @@
           </table></div></div>
       <div class="paiement text-center">
             <div class="total-produit "></div>
-            <button type="reset" class="btn-sub btn" id="actualiser">Actualiser mon panier</button></div>
+            <button type="button" class="btn-sub btn" id="actualiser">Actualiser mon panier</button></div>
             
             
       </div>
@@ -86,39 +86,39 @@
 
 
           <div class="container mt-5">
-            <form class="row g-3 justify-content-center" id="coordonees">
+            <form class="row g-3 justify-content-center" id="formulaire" >
               
                 <div class="col-md-8">
                   <label for="inputEmail4" class="form-label">Prénom</label>
-                  <input type="text" class="form-control" placeholder="First name" aria-label="First name" name="first-name" min-length= "2" max-length= "20" required>
-                  <span id="erreur-prenom" class="erreur"></span>
+                  <input type="text" id="first-name"class="form-control" placeholder="First name" aria-label="First name" name="first-name" min-length= "2" max-length= "20" required>
+                  <span class="erreur-msg">Merci de remplir un prenom</span>
                 </div>
                 <div class="col-md-8">
                   <label for="inputEmail4" class="form-label">Nom</label>
-                  <input type="text" class="form-control" placeholder="Last name" aria-label="Last name" name="last-name" min-length= "2" max-length= "30" required>
-                  <span id="erreur-nom" class="erreur"></span>
+                  <input type="text" id="last-name"class="form-control" placeholder="Last name" aria-label="Last name" name="last-name" min-length= "2" max-length= "30" required>
+                  <span class="erreur-msg">Merci de remplir votre nom</span>
                 </div>
               
                 <div class="col-md-8">
                   <label for="inputEmail" class="form-label">E-mail</label>
-                  <input type="email" class="form-control" name="inputEmail" placeholder="James@bond.com" required>
-                  <span id="emptyFirstName" class="erreur"></span>
+                  <input type="email" id="email" class="form-control" name="inputEmail" placeholder="James@bond.com" required>
+                  <span id="emptyFirstName" class="erreur-msg">Merci de renseigner un email</span>
                 </div>
                 
                 <div class="col-md-8">
                   <label for="inputAddress" class="form-label">Address</label>
-                  <input type="text" class="form-control" name="inputAddress" placeholder="Numero et rue" required>
-                  <span id="emptyFirstName " class="erreur"></span>
+                  <input type="text" id='adress'class="form-control" name="inputAddress" placeholder="Numero et rue" required>
+                  <span class="erreur-msg">Merci de renseigner une adresse</span>
                 </div>
                
                 <div class="col-md-8">
                   <label for="inputCity" class="form-label">Ville</label>
-                  <input type="text" class="form-control" name="inputCity" placeholder="ville" required>
-                  <span id="emptyFirstName " class="erreur"></span>
+                  <input type="text" id="city" class="form-control" name="inputCity" placeholder="ville" required>
+                  <span id="emptyFirstName " class="erreur-msg">Merci de renseigner une ville</span>
                 </div>
           
                 <div class="col-md-8 text-center">
-                  <input type="submit" class="btn btn-primary" value="Commander" name="send-data" id="send-data">
+                  <input type="submit" class="btn btn-primary" value="commander" >
                 </div>
               </form>
             </div>

@@ -54,7 +54,7 @@ const addStorageToPage =()=>{
           <div class="CartItem-price--total">${sousTotal(parseInt(Item.PriceArticle),parseInt(Item.QuantiteArticle))}.00 €</div>
           <input type="hidden" name="productCode" value="${Item.IdArticle}">
           </td>
-          <td>  <button value="suppress" class="suppress-btn"><i class="fas fa-times"></i></button></td>
+          <td>  <button type="button" value="suppress" class="suppress-btn"><i class="fas fa-times"></i></button></td>
           </tr>
         
   
@@ -154,48 +154,64 @@ changeQuantite();
 //------------------------------Recuperer les valeurs du formulaire--------------------------------------------
 
 
-const submit=()=>{
-document.forms['coordonees'].addEventListener('submit',(e)=>
-{
-  e.preventDefault();
-  let erreur;
-  let inputs = this;
 
-  //check si le panier est vide-------------------------
-  if(basketItems.length==0){
-    return false;
+let inputs = document.querySelectorAll(`input[type='text'], input[type='email']`);
+
+let formulaire=document.querySelector('form');
+
+// un formulaire vide ou avec uniquement des espaces ne peut pas etre envoyé
+formulaire.addEventListener('submit', (e)=>{
+  var valid= true;
+  for (let input of inputs){
+   
+    valid = valid && input.reportValidity();
+    
+    if (!valid){
+      e.preventDefault();
+      console.log('not valid');
+      input.nextElementSibling.classList.add('show');
+      input.classList.add('error');
+      alert('remplissez correctement les champs')
+      // input.nextElementSibling.classList.add('show');
+      break;
+      
+    };
+    if (input.value==' '|| input.value.length<= 2){
+      input.nextElementSibling.classList.add('show');
+      input.classList.add('error');
+      valid=false;
+    }
+    
   }
+ if(valid){
+
   
-  //check le prenom-------------------------
-
-    if (/^[^0-9±!@£$%^&*_+§¡€#¢§¶•ªº«\\<>?:;|=.,]{1,20}$/.test(inputs ['firstName'])){
-      console.log('ok');
-   }else{
-       erreur= 'Ce champ ne doit pas contenir de caracteres speciaux ou de chiffres'
-    document.getElementById("erreur-prenom").innerText=erreur
-    }
-
-  //check le nom-----------------------------
-    if (/^[^±!@£$%^&*_+§¡€#¢§¶•ªº«\\<>?:;|=.,]{1,20}$/.test(inputs ['lastName'])){
-      console.log('ok');
-    }else{
-      erreur= 'Ce champ ne doit pas contenir de caracteres speciaux ou de chiffres'
-      document.getElementById("erreur-nom").innerText=erreur
-    }
-
-  // check l'email---------------------------
+  let contact={
+    firstName: inputs[0].value,
+    lastName: inputs[1].value,
+    email: inputs[2].value,
+    adress:inputs[3].value,
+    city:inputs[4].value
+  }
+  let products=localStorage.getItem('produit')
   
-  // check l'adresse ----------------------------
-  // if (/^[a-zA-Z0-9\s,.'-]{3,}$/.test(inputs ['adress'])){
-  //   console.log('ok');
-  //   }
-  //check la ville ------------------------------
-
-})
-
+ }
+ 
 }
-submit();
 
+)
 
+// quand les erreurs sont corrigées sur les inputs les messages d'erreur disparaissent
+
+inputs.forEach(element => {
+  element.addEventListener('input', ()=>
+  {
+    console.log(element.value);
+    if (element.validity.valid){
+      element.nextElementSibling.classList.remove('show');
+      element.classList.add('error');
+    }
+  })
+});
 
 

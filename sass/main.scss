@@ -170,9 +170,7 @@ tbody {
     font-size: 1rem;
   }
 }
-.erreur {
-  color: red;
-}
+
 .align-column {
   display: flex;
   flex-direction: column;
@@ -196,6 +194,22 @@ tbody {
     border-radius: 10px;
   }
 }
+//-------------------form properties-------------------
+.form-control:valid {
+  border-color: rgb(46, 46, 214);
+}
+.error {
+  border-color: rgb(221, 73, 73);
+}
+.erreur-msg {
+  display: none;
+  color: rgb(221, 73, 73);
+
+  &.show {
+    display: block;
+  }
+}
+
 //-------------------footer properties-------------------
 footer {
   background-color: $color-primary;
