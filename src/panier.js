@@ -10,9 +10,10 @@ const allStorage=() =>{
 
    if(localStorage.getItem('produit')=== null ){
      displayAnEmptyCart();
-
-
-   }else{let values = [];
+    let values = [];
+    return values;
+   } else{
+     let values = [];
     
     values.push(localStorage.getItem('produit'))
     
@@ -20,8 +21,10 @@ const allStorage=() =>{
     return JSON.parse(values);
    }
 }
+allStorage();
 let basketItems=allStorage();
 
+console.log(basketItems);
   
 
 //-----------------------------ajouter les donnees sur la page//------------------------------
@@ -33,7 +36,9 @@ const sousTotal =(a,b)=>{
 }
 
 const addStorageToPage =()=>{
+
     let basketItems=allStorage();
+    if (basketItems.length>0){
       const allCartItems = basketItems.map(
           (Item)=>
           `
@@ -68,7 +73,7 @@ const addStorageToPage =()=>{
       ).join(' ');
       document.querySelector("#CartTableBody").innerHTML = allCartItems;
       
-      
+    }
   }
 allStorage();
 addStorageToPage();
@@ -79,7 +84,7 @@ addStorageToPage();
 
 const getAllPrices = ()=>{
         let allPrices=[];
-        for (let item of basketItems){
+        for (let item=0; item< basketItems.length ;item++){
           
           let price=sousTotal(parseInt(item.PriceArticle),parseInt(item.QuantiteArticle));
           allPrices.push(price);
@@ -167,22 +172,26 @@ let inputs = document.querySelectorAll(`input[type='text'], input[type='email']`
 let formulaire=document.querySelector('form');
 
 // un formulaire vide ou avec uniquement des espaces ou vide ou comportant moins de 2 caracteres ne peut pas etre envoyé.---------
+
 formulaire.addEventListener('submit', (e)=>{
-  e.preventDefault();
+  
+  
+ 
   var valid= true;
   for (let input of inputs){
    
-    valid = valid && input.reportValidity() && basketItems.length>0;
+    valid = valid && input.reportValidity();
+
     
     if (!valid){
-      
+      e.preventDefault();
       console.log('not valid');
       input.nextElementSibling.classList.add('show');
       input.classList.add('error');
       break;
       
     }else if (input.value==' '|| input.value.length < 2){
-      
+      e.preventDefault();
       input.nextElementSibling.classList.add('show');
       input.classList.add('error');
       valid=false;
@@ -190,8 +199,10 @@ formulaire.addEventListener('submit', (e)=>{
     }
     
   }
-  if(valid){
-    
+  if(basketItems.length === 0){
+    alert('Votre panier est vide!')}
+  else{
+    e.preventDefault();
     let totalCommande= getAllPrices();
     localStorage.setItem('totalPrice',JSON.stringify(totalCommande) )
   

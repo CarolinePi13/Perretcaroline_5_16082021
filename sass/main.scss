@@ -68,10 +68,16 @@ a {
   h1 {
     font-size: 2.5rem;
     font-family: $font-primary;
+    @include tablettes {
+      font-size: 3.5rem;
+    }
   }
   p {
     font-size: 1.5rem;
     font-family: $font-primary;
+    @include tablettes {
+      font-size: 2.5rem;
+    }
   }
 }
 //-------------------navigation properties-------------------
@@ -100,6 +106,9 @@ a {
   .fa-shopping-cart {
     font-size: 30px;
   }
+  :hover {
+    transform: scale(1.05);
+  }
 }
 
 //-------------------Card body-------------------
@@ -112,12 +121,19 @@ select {
 }
 #submit {
   &.btn--article {
+    transition: 300ms;
     &:hover {
-      background-color: lighten($color: black, $amount: 20%);
-      transform: scale(1.1);
+      transform: scale(1.05);
     }
   }
 }
+// modal properties------------------
+.modal-footer {
+  justify-content: center;
+}
+// .modal {
+//   width: ;
+// }
 //-------------------cart properties-------------------
 .fa-sad-tear {
   font-size: 3rem;
@@ -128,6 +144,10 @@ select {
 }
 .fillUP {
   font-weight: bold;
+  background-color: $color-primary;
+  &:hover {
+    transform: scaleX(1.2);
+  }
 
   a {
     background-color: $color-primary;
@@ -162,7 +182,7 @@ select {
   border-radius: 15px;
   width: 100%;
   box-shadow: 5px 5px 5px gray;
-  &:hover {
+  &.effect:hover {
     transform: scale(0.99);
   }
 }
@@ -206,19 +226,49 @@ tbody {
 .btn-sub {
   display: flex;
   justify-content: center;
+
   &:active {
     transform: scale(0.9);
   }
 }
+.btn-primary {
+  padding: 10px;
+  border: solid gray;
+  box-shadow: 2px 2px 2px 2px gray;
+  font-family: $font-primary;
+  display: flex;
+  font-size: 1.5rem;
+  justify-content: center;
+  background-color: darken($color: white, $amount: 5%);
+  color: black !important;
+  font-weight: bold;
+  &:hover {
+    background-color: darken($color: white, $amount: 15%);
+    border-color: darken($color: gray, $amount: 10%);
+  }
+}
+.btn-modal {
+  background-color: $color-secondary;
+  &:active,
+  :hover {
+    font-weight: bold;
+  }
+  a {
+    color: black;
+  }
+}
+
+.consulter {
+  display: flex;
+  justify-content: center;
+}
 .btn {
-  background-color: $color-primary;
   color: white;
-  border: none;
+
   transition: 200ms;
+
   &:hover {
     color: white;
-
-    background-color: $color-primary !important;
   }
 }
 .suppress-btn {

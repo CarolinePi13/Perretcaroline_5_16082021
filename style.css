@@ -11147,9 +11147,19 @@ a {
   font-size: 2.5rem;
   font-family: "latin_modern_mono_light10Bd", sans-serif;
 }
+@media (min-width: 660px) {
+  .pres h1, .pres .h1 {
+    font-size: 3.5rem;
+  }
+}
 .pres p {
   font-size: 1.5rem;
   font-family: "latin_modern_mono_light10Bd", sans-serif;
+}
+@media (min-width: 660px) {
+  .pres p {
+    font-size: 2.5rem;
+  }
 }
 
 .navbar-collapse {
@@ -11180,6 +11190,9 @@ a {
 .nav-item .fa-shopping-cart {
   font-size: 30px;
 }
+.nav-item :hover {
+  transform: scale(1.05);
+}
 
 select {
   box-shadow: 3px 3px 3px gray;
@@ -11187,9 +11200,15 @@ select {
   background-color: #d8d2d2;
 }
 
+#submit.btn--article {
+  transition: 300ms;
+}
 #submit.btn--article:hover {
-  background-color: #333333;
-  transform: scale(1.1);
+  transform: scale(1.05);
+}
+
+.modal-footer {
+  justify-content: center;
 }
 
 .fa-sad-tear {
@@ -11203,6 +11222,10 @@ select {
 
 .fillUP {
   font-weight: bold;
+  background-color: #161412;
+}
+.fillUP:hover {
+  transform: scaleX(1.2);
 }
 .fillUP a {
   background-color: #161412;
@@ -11244,7 +11267,7 @@ select {
   width: 100%;
   box-shadow: 5px 5px 5px gray;
 }
-.card:hover {
+.card.effect:hover {
   transform: scale(0.99);
 }
 
@@ -11299,15 +11322,45 @@ tbody {
   transform: scale(0.9);
 }
 
+.btn-primary {
+  padding: 10px;
+  border: solid gray;
+  box-shadow: 2px 2px 2px 2px gray;
+  font-family: "latin_modern_mono_light10Bd", sans-serif;
+  display: flex;
+  font-size: 1.5rem;
+  justify-content: center;
+  background-color: #f2f2f2;
+  color: black !important;
+  font-weight: bold;
+}
+.btn-primary:hover {
+  background-color: #d9d9d9;
+  border-color: #676767;
+}
+
+.btn-modal {
+  background-color: #ddd9d6;
+}
+.btn-modal:active,
+.btn-modal :hover {
+  font-weight: bold;
+}
+.btn-modal a {
+  color: black;
+}
+
+.consulter {
+  display: flex;
+  justify-content: center;
+}
+
 .btn {
-  background-color: #161412;
   color: white;
-  border: none;
   transition: 200ms;
 }
 .btn:hover {
   color: white;
-  background-color: #161412 !important;
 }
 
 .suppress-btn {
