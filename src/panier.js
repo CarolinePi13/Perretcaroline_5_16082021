@@ -1,20 +1,28 @@
 //----------------------recuperation des donnees du localStorage//---------------------------------------
-
+const displayAnEmptyCart=()=>{
+  document.getElementById('actualiser').classList.add('btn--hidden');
+    const emptyCart=document.getElementById('CartTable').innerHTML =`<p class="empty-cart text-center">Oh! Votre panier est vide!</p>
+<i class="far fa-sad-tear"></i>
+<div class="btn fillUP btn-sub"><a href="index.html">Retour à la boutique!</a></div>`;
+  return emptyCart;
+}
 const allStorage=() =>{
 
-    let values = [];
-    let keys = Object.keys(localStorage);
-    let i = keys.length;
+   if(localStorage.getItem('produit')=== null ){
+     displayAnEmptyCart();
 
-    while ( i-- ) {
-        values.push( localStorage.getItem(keys[i]) );
-    }
+
+   }else{let values = [];
+    
+    values.push(localStorage.getItem('produit'))
+    
 
     return JSON.parse(values);
-    
+   }
 }
 let basketItems=allStorage();
 
+  
 
 //-----------------------------ajouter les donnees sur la page//------------------------------
 const sousTotal =(a,b)=>{
@@ -23,8 +31,6 @@ const sousTotal =(a,b)=>{
    return result;
 
 }
-
-
 
 const addStorageToPage =()=>{
     let basketItems=allStorage();
@@ -54,13 +60,14 @@ const addStorageToPage =()=>{
           <div class="CartItem-price--total">${sousTotal(parseInt(Item.PriceArticle),parseInt(Item.QuantiteArticle))}.00 €</div>
           <input type="hidden" name="productCode" value="${Item.IdArticle}">
           </td>
-          <td>  <button type="button" value="suppress" class="suppress-btn"><i class="fas fa-times"></i></button></td>
+          <td>  <button type="button" value="suppress" class="suppress-btn"><i class="fas fa-trash-alt"></i></button></td>
           </tr>
         
   
           `
       ).join(' ');
-      document.getElementById("CartTableBody").innerHTML = allCartItems;
+      document.querySelector("#CartTableBody").innerHTML = allCartItems;
+      
       
   }
 allStorage();
@@ -118,8 +125,9 @@ const removeArticleFromCart = async()=>{
    
   }
   if(basketItems.length==0){
-    document.getElementById('CartTable').innerHTML =`<p class="empty-cart text-center">Votre panier est vide</p>
-    <div class="btn fillUP btn-sub"><a href="index.html">Remplir votre panier</a></div>`}
+   displayAnEmptyCart();
+  };
+
     displayNewTotal(); 
 }
 
@@ -154,48 +162,76 @@ changeQuantite();
 //------------------------------Recuperer les valeurs du formulaire--------------------------------------------
 
 
-
 let inputs = document.querySelectorAll(`input[type='text'], input[type='email']`);
 
 let formulaire=document.querySelector('form');
 
-// un formulaire vide ou avec uniquement des espaces ne peut pas etre envoyé
+// un formulaire vide ou avec uniquement des espaces ou vide ou comportant moins de 2 caracteres ne peut pas etre envoyé.---------
 formulaire.addEventListener('submit', (e)=>{
+  e.preventDefault();
   var valid= true;
   for (let input of inputs){
    
-    valid = valid && input.reportValidity();
+    valid = valid && input.reportValidity() && basketItems.length>0;
     
     if (!valid){
-      e.preventDefault();
+      
       console.log('not valid');
       input.nextElementSibling.classList.add('show');
       input.classList.add('error');
-      alert('remplissez correctement les champs')
-      // input.nextElementSibling.classList.add('show');
       break;
       
-    };
-    if (input.value==' '|| input.value.length<= 2){
+    }else if (input.value==' '|| input.value.length < 2){
+      
       input.nextElementSibling.classList.add('show');
       input.classList.add('error');
       valid=false;
+      break;
     }
     
   }
- if(valid){
+  if(valid){
+    
+    let totalCommande= getAllPrices();
+    localStorage.setItem('totalPrice',JSON.stringify(totalCommande) )
+  
+    let contactData={
+      firstName: inputs[0].value,
+      lastName: inputs[1].value,
+      address: inputs[3].value,
+      city: inputs[4].value,
+      email: inputs[2].value
+    }
+    let productsData=[];
+    for (let item of basketItems){
+      productsData.push(item.IdArticle);
+    }
+    var myInit = { method: "POST",
+                  headers: {
+                    "Content-Type": "Application/json",
+                  },
+                  body: JSON.stringify({
+                    contact: contactData,
+                    products: productsData
+                  }),
+                  mode: 'cors',
+                  };
 
-  
-  let contact={
-    firstName: inputs[0].value,
-    lastName: inputs[1].value,
-    email: inputs[2].value,
-    adress:inputs[3].value,
-    city:inputs[4].value
+    const postData = () => {
+        fetch('http://localhost:3000/api/cameras/order', myInit)       
+        .then ((response)=> response.json())
+        .then (json => {
+          let order= json.orderId;
+          localStorage.setItem('order', JSON.stringify(order));
+          window.location.href="./thanksorder.html";
+        })
+        
+        
+
+    };
+    postData();
+    
   }
-  let products=localStorage.getItem('produit')
-  
- }
  
 }
 
@@ -206,7 +242,7 @@ formulaire.addEventListener('submit', (e)=>{
 inputs.forEach(element => {
   element.addEventListener('input', ()=>
   {
-    console.log(element.value);
+    
     if (element.validity.valid){
       element.nextElementSibling.classList.remove('show');
       element.classList.add('error');

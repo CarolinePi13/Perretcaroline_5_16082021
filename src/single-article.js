@@ -21,7 +21,7 @@ const displaySingleArticle = async () => {
           let articleOnPage =
                                   `
                                   
-                                  <div class="col">
+                                  <div class="col-lg-6 offset-lg-3">
                                   <div class="card">
                                   <img src="${articleData.imageUrl}" class="card-img-top photo-change" alt="image de ${articleData.name}">
                                   <div class="card-body">
