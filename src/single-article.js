@@ -9,7 +9,11 @@ let articleData = [];
 const fetchSingleArticle = async () => {
     await fetch(`http://localhost:3000/api/cameras/${articleId}`)
         .then((res) => res.json())
-        .then((data) => articleData = (data));
+        .then((data) => {
+          articleData = data;
+          document.querySelector('title').innerText=`${articleData.name}`
+        })
+        
 };
 
 //affichage des options
@@ -25,7 +29,7 @@ const displaySingleArticle = async () => {
                                   <div class="card">
                                   <img src="${articleData.imageUrl}" class="card-img-top photo-change" alt="image de ${articleData.name}">
                                   <div class="card-body">
-                                    <h2 class="card-title">${articleData.name}</h2>        
+                                    <h1 class="card-title">${articleData.name}</h1>        
                                     <p class=>${articleData.description}</p><p>${(articleData.price/ 100)}.00 €</p>
                                     <label for="quantite-select">Quantité :</label>
                                     <select name="quantite" id="quantite" 

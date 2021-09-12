@@ -34,5 +34,4 @@ const displayArticles = async () => {
 };
 
 displayArticles();
-//  const GoToSingleArticlePage =
-//  ()=>{document.getElementById("link-to-article").addEventListener("click", )},
+

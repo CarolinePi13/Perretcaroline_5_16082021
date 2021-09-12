@@ -24,7 +24,7 @@ const allStorage=() =>{
 allStorage();
 let basketItems=allStorage();
 
-console.log(basketItems);
+
   
 
 //-----------------------------ajouter les donnees sur la page//------------------------------
@@ -84,7 +84,7 @@ addStorageToPage();
 
 const getAllPrices = ()=>{
         let allPrices=[];
-        for (let item=0; item< basketItems.length ;item++){
+        for (let item of basketItems){
           
           let price=sousTotal(parseInt(item.PriceArticle),parseInt(item.QuantiteArticle));
           allPrices.push(price);
@@ -172,9 +172,9 @@ let inputs = document.querySelectorAll(`input[type='text'], input[type='email']`
 let formulaire=document.querySelector('form');
 
 // un formulaire vide ou avec uniquement des espaces ou vide ou comportant moins de 2 caracteres ne peut pas etre envoyé.---------
-
+const checkAndSend=()=>{
 formulaire.addEventListener('submit', (e)=>{
-  
+  e.preventDefault();
   
  
   var valid= true;
@@ -187,13 +187,13 @@ formulaire.addEventListener('submit', (e)=>{
       e.preventDefault();
       console.log('not valid');
       input.nextElementSibling.classList.add('show');
-      input.classList.add('error');
+      
       break;
       
     }else if (input.value==' '|| input.value.length < 2){
       e.preventDefault();
       input.nextElementSibling.classList.add('show');
-      input.classList.add('error');
+      
       valid=false;
       break;
     }
@@ -201,7 +201,7 @@ formulaire.addEventListener('submit', (e)=>{
   }
   if(basketItems.length === 0){
     alert('Votre panier est vide!')}
-  else{
+  else if (valid){
     e.preventDefault();
     let totalCommande= getAllPrices();
     localStorage.setItem('totalPrice',JSON.stringify(totalCommande) )
@@ -241,13 +241,18 @@ formulaire.addEventListener('submit', (e)=>{
 
     };
     postData();
-    
+    checkAndSend();
+  }else{
+   console.log('error');
   }
  
 }
 
 )
 
+
+}
+checkAndSend();
 // quand les erreurs sont corrigées sur les inputs les messages d'erreur disparaissent
 
 inputs.forEach(element => {

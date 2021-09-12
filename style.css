@@ -11191,7 +11191,7 @@ a {
   font-size: 30px;
 }
 .nav-item :hover {
-  transform: scale(1.05);
+  transform: scaleY(1.05);
 }
 
 select {
@@ -11260,6 +11260,12 @@ select {
 .table {
   background-color: white;
   border-radius: 15px;
+}
+
+@media (min-width: 660px) {
+  .total-produit {
+    font-size: 1.5rem;
+  }
 }
 
 .card {
@@ -11384,10 +11390,6 @@ tbody {
 
 .form-control:valid {
   border-color: #2e2ed6;
-}
-
-.error {
-  border-color: #dd4949;
 }
 
 .erreur-msg {

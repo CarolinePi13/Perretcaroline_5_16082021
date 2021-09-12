@@ -107,7 +107,7 @@ a {
     font-size: 30px;
   }
   :hover {
-    transform: scale(1.05);
+    transform: scaleY(1.05);
   }
 }
 
@@ -177,6 +177,11 @@ select {
 .table {
   background-color: white;
   border-radius: 15px;
+}
+.total-produit {
+  @include tablettes {
+    font-size: 1.5rem;
+  }
 }
 .card {
   border-radius: 15px;
@@ -293,9 +298,7 @@ tbody {
 .form-control:valid {
   border-color: rgb(46, 46, 214);
 }
-.error {
-  border-color: rgb(221, 73, 73);
-}
+
 .erreur-msg {
   display: none;
   color: rgb(221, 73, 73);

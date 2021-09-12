@@ -5,55 +5,46 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name ='description' content="application de vente d'appareil photo vintage, produits vintage restaurés">
     <link rel="preconnect" href="https://fonts.googleapis.com"> 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Style+Script&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="./style.css">
     <script src="https://kit.fontawesome.com/d50d217fe0.js" crossorigin="anonymous"></script>
-    <title>Document</title>
+    <title>Panier</title>
 </head>
 
 <body>
-<!DOCTYPE html>
-<html lang="fr">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com"> 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Style+Script&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="./style.css">
-    <title>Mon panier</title>
-</head>
-
-<body>
             
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="./index.html"><img src="images/cart-logor.png" alt=logo> Orinoco</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                  <li class="nav-item">
-                    <a class="nav-link" href="./index.html">Shop</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="./Panier.html"><i class="fas fa-shopping-cart"></i></a>
-                  </li>
-               
-                </ul>
-              </div>
-            </div>
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="./index.html"><img src="images/cart-logor.png" alt=logo> Orinoco</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="index.html">Shop</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="panier" href="./Panier.html"><i class="fas fa-shopping-cart bigger"></i><span class="smaller">Panier</span></a>
+              </li>
+           
+            </ul>
+          </div>
+        </div>
+    </nav>
     
     </header>
         <main>
+          <div class="container my-5 text-center pres">
+            <h1>Votre Panier</h1>
+            
+           </div>
        <div class="container  table mt-5">
          
          <div class="row p-2">
@@ -76,10 +67,11 @@
           </table></div></div>
       <div class="paiement text-center">
             <div class="total-produit "></div>
-            <button type="button" class="btn-sub btn fillUP" id="actualiser">Actualiser mon panier</button></div>
-            
-            
+            <button type="button" class="btn-sub btn fillUP" id="actualiser">Actualiser mon panier</button>
       </div>
+            
+            
+      
 
 
 
@@ -90,12 +82,12 @@
               
                 <div class="col-md-8">
                   <label for="first-name" class="form-label">Prénom</label>
-                  <input type="text" id="first-name"class="form-control" placeholder="First name" aria-label="First name" name="first-name" min-length= "2" max-length= "20" required>
+                  <input type="text" id="first-name" class="form-control" placeholder="First name" aria-label="First name" name="first-name" required>
                   <span class="erreur-msg">Merci de remplir un prenom</span>
                 </div>
                 <div class="col-md-8">
                   <label for="last-name" class="form-label">Nom</label>
-                  <input type="text" id="last-name"class="form-control" placeholder="Last name" aria-label="Last name" name="last-name" min-length= "2" max-length= "30" required>
+                  <input type="text" id="last-name" class="form-control" placeholder="Last name" aria-label="Last name" name="last-name" required>
                   <span class="erreur-msg">Merci de remplir votre nom</span>
                 </div>
               
@@ -106,15 +98,15 @@
                 </div>
                 
                 <div class="col-md-8">
-                  <label for="address" class="form-label">Address</label>
-                  <input type="text" id='address'class="form-control" name="inputAddress" placeholder="Numero et rue" required>
+                  <label for="address" class="form-label">Adresse</label>
+                  <input type="text" id='address' class="form-control" name="inputAddress" placeholder="Numero et rue" required>
                   <span class="erreur-msg">Merci de renseigner une adresse</span>
                 </div>
                
                 <div class="col-md-8">
-                  <label for="city" class="form-label">Ville</label>
-                  <input type="text" id="city" class="form-control" name="inputCity" placeholder="ville" required>
-                  <span id="emptyFirstName " class="erreur-msg">Merci de renseigner une ville</span>
+                  <label for="city" class="form-label">Code Postal et Ville</label>
+                  <input type="text" id="city" class="form-control" name="inputCity" placeholder="Code postal et ville" required>
+                  <span  class="erreur-msg">Merci de renseigner une ville</span>
                 </div>
           
                 <div class="col-md-8 text-center">
