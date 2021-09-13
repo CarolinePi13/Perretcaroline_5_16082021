@@ -13,7 +13,7 @@ const fetchSingleArticle = async () => {
           articleData = data;
           document.querySelector('title').innerText=`${articleData.name}`
         })
-        
+       console.log(articleData)
 };
 
 //affichage des options
@@ -73,7 +73,7 @@ const addToCart = async() =>{
  
   document.getElementById("submit").addEventListener("click", ()=>{
     let amountArticles=  document.getElementById("quantite").value
-    console.log(amountArticles);
+    
     let articleAdded={
       ImgArticle: articleData.imageUrl,
       IdArticle: articleData._id,
@@ -85,7 +85,7 @@ const addToCart = async() =>{
   // ajouter au local storage
 
     let articleToLocalStorage = JSON.parse(localStorage.getItem('produit'));
-    console.log(articleToLocalStorage);
+    
 
       if(articleToLocalStorage){
         
@@ -102,4 +102,4 @@ const addToCart = async() =>{
 
 addToCart();
 
-//alert panier incremente et icone sur panier
+
