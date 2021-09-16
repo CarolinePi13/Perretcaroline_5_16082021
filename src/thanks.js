@@ -1,6 +1,6 @@
-localStorage.removeItem('produit');
+localStorage.removeItem('produit');// vide le panier
 
-
+// recupere et affiche l'order id et le prix total et l'affiche sur la page
 const getOrderId = ()=>{
     let orderID = localStorage.getItem('order')
 

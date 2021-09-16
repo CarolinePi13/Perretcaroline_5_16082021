@@ -16,7 +16,7 @@ const fetchSingleArticle = async () => {
        console.log(articleData)
 };
 
-//affichage des options
+
 
 //affichage de l'article
 const displaySingleArticle = async () => {
@@ -24,27 +24,28 @@ const displaySingleArticle = async () => {
    .then (() =>{
           let articleOnPage =
                                   `
-                                  
-                                  <div class="col-lg-6 offset-lg-3">
-                                  <div class="card">
-                                  <img src="${articleData.imageUrl}" class="card-img-top photo-change" alt="image de ${articleData.name}">
-                                  <div class="card-body">
-                                    <h1 class="card-title">${articleData.name}</h1>        
-                                    <p class=>${articleData.description}</p><p>${(articleData.price/ 100)}.00 €</p>
-                                    <label for="quantite-select">Quantité :</label>
-                                    <select name="quantite" id="quantite" 
-                                    <option value="">---</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option></select><br><br>
-                                    <label for="pet-select">Choisissez une lentille: </label>
-                                    <select name="vernis" class="lense-select">
-                                         <option value="">----</option> 
-                                    </select> 
+                 <div class="col-lg-6 offset-lg-3">
+                    <div class="card">
+                      <img src="${articleData.imageUrl}" class="card-img-top photo-change" alt="image de ${articleData.name}">
+                      <div class="card-body">
+                          <h1 class="card-title">${articleData.name}</h1>        
+                          <p class=>${articleData.description}</p><p>${(articleData.price/ 100)}.00 €</p>
+
+                          <label for="quantite-select">Quantité :</label>
+                          <select name="quantite" id="quantite" 
+                            <option value="">---</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option></select><br><br>
+                            <label for="pet-select">Choisissez une lentille: </label>
+
+                          <select name="vernis" class="lense-select">
+                            <option value="">----</option> 
+                          </select> 
                                     
-                                </div>
-                              </div>
-                                </div>
+                      </div>
+                    </div>
+                </div>
                                 
                       `
                       let singleArticle=document.getElementById("single-article");
@@ -52,8 +53,9 @@ const displaySingleArticle = async () => {
 
    })
         .then (()=>{
+          //affichage des options
            const lenses = articleData.lenses;
-        for(let lense of lenses){
+              for(let lense of lenses){
                 let option=document.createElement("option");
                 let lenseSelect=document.querySelector(".lense-select")
                 lenseSelect.appendChild(option);
@@ -67,7 +69,7 @@ const displaySingleArticle = async () => {
 displaySingleArticle();
 
 
-// recuperer les donnees
+// recuperer les donnees de l'article incluant la quantite, l'option choisie n'est pour l'instant pas enregistree
 const addToCart = async() =>{
   await displaySingleArticle();
  

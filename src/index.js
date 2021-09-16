@@ -1,4 +1,5 @@
 
+// get all articles from the API
 let articleData = [];
 
 
@@ -9,7 +10,7 @@ const fetchArticles = async () => {
         .then((data) => articleData = (data));
     
 };
-
+// display the artciles as cards on the index.html 
 const displayArticles = async () => {
     await fetchArticles();
     
