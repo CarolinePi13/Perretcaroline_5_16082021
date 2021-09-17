@@ -1,0 +1,28 @@
+//-------------------Article properties-------------------
+select {
+  box-shadow: 3px 3px 3px gray;
+  border-radius: 5px;
+  background-color: rgb(216, 210, 210);
+}
+#submit {
+  &.btn--article {
+    transition: 300ms;
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}
+// modal properties------------------
+.modal-footer {
+  justify-content: center;
+}
+.btn-modal {
+  background-color: $color-secondary;
+  &:active,
+  :hover {
+    font-weight: bold;
+  }
+  a {
+    color: black;
+  }
+}

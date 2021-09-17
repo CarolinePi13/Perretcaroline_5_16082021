@@ -1,0 +1,130 @@
+$color-primary: rgba(22, 20, 18, 1);
+$color-tertiary: rgba(199, 189, 177, 1);
+$color-secondary: rgba(221, 217, 214, 1);
+@font-face {
+  font-family: "belligerent_madnessregular";
+  src: url("belligerentmadness_regular_macroman/belligerent-webfont.eot");
+  src: url("belligerentmadness_regular_macroman/belligerent-webfont.eot?#iefix")
+      format("embedded-opentype"),
+    url("belligerentmadness_regular_macroman/belligerent-webfont.woff")
+      format("woff"),
+    url("belligerentmadness_regular_macroman/belligerent-webfont.ttf")
+      format("truetype"),
+    url("belligerentmadness_regular_macroman/belligerent-webfont.svg#belligerent_madnessregular")
+      format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "latin_modern_mono_light10Bd";
+  src: url("latinmodernmonolight_10bold_macroman/lmmonolt10-bold-webfont.eot");
+  src: url("latinmodernmonolight_10bold_macroman/lmmonolt10-bold-webfont.eot?#iefix")
+      format("embedded-opentype"),
+    url("latinmodernmonolight_10bold_macroman/lmmonolt10-bold-webfont.ttf")
+      format("truetype"),
+    url("latinmodernmonolight_10bold_macroman/lmmonolt10-bold-webfont.svg#latin_modern_mono_light10Bd")
+      format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+$font-primary: "latin_modern_mono_light10Bd", sans-serif;
+@mixin portable {
+  @media (max-width: 500px) {
+    @content;
+  }
+}
+
+@mixin tablettes {
+  @media (min-width: 660px) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media (min-width: 1020px) {
+    @content;
+  }
+}
+@mixin large-desk {
+  @media (min-width: 1600px) {
+    @content;
+  }
+}
+
+body {
+  background-color: $color-secondary;
+  @include large-desk {
+    max-width: 1600px;
+    margin: auto;
+  }
+}
+a {
+  text-decoration: none;
+}
+
+//-------------------navigation properties-------------------
+.navbar-collapse {
+  justify-content: flex-end;
+  padding-right: 2%;
+}
+.navbar-dark {
+  background-color: $color-primary;
+}
+.nav-link {
+  font-size: 1.5rem;
+}
+.navbar-brand {
+  font-family: "belligerent_madnessregular", sans-serif;
+  font-size: 40px;
+  img {
+    height: 50px;
+  }
+}
+.nav-item {
+  .smaller {
+    font-size: 0.9rem;
+    padding-left: 5px;
+  }
+  .fa-shopping-cart {
+    font-size: 30px;
+  }
+  :hover {
+    transform: scaleY(1.05);
+  }
+}
+
+//-------------------footer properties-------------------
+footer {
+  background-color: $color-primary;
+  padding: 2%;
+
+  ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    @include tablettes {
+      flex-direction: row;
+      justify-content: space-around;
+    }
+  }
+  li {
+    &:hover {
+      transform: scaleX(1.1);
+    }
+  }
+  a {
+    color: white;
+    font-size: 1rem;
+    @include tablettes {
+      font-size: 1.2rem;
+    }
+    &:hover {
+      color: white;
+    }
+  }
+}
+//-------------------thanks page properties-------------------
+
+.thanks {
+  font-size: 1.3rem;
+}

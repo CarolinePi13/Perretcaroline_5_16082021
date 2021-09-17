@@ -156,7 +156,7 @@ removeArticleFromCart();
 //----------------------------------changer la quantite du produit-------------------------------------------
 const changeQuantite=()=>{
 
-   document.getElementById('actualiser').addEventListener('click',(e)=>{
+   document.getElementById('actualiser').addEventListener('click',()=>{
 
     let selectNewQuantite=Array.from(document.querySelectorAll('select'))
     

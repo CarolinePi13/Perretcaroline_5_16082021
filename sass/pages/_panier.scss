@@ -1,0 +1,159 @@
+//-------------------cart properties-------------------
+.fa-sad-tear {
+  font-size: 3rem;
+}
+.empty-cart {
+  font-size: 2rem;
+  font-weight: bold;
+}
+.fillUP {
+  font-weight: bold;
+  background-color: $color-primary;
+  &:hover {
+    transform: scaleX(1.2);
+  }
+
+  a {
+    background-color: $color-primary;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+  }
+}
+.btn--hidden {
+  visibility: hidden;
+}
+
+#CartTable {
+  font-size: 0.7rem;
+  border-spacing: 5px;
+  text-align: center;
+  @include portable {
+    border-spacing: 5px 20px;
+    img {
+      display: none;
+    }
+  }
+  @include tablettes {
+    font-size: 1rem;
+  }
+}
+.table {
+  background-color: white;
+  border-radius: 15px;
+}
+.total-produit {
+  @include tablettes {
+    font-size: 1.5rem;
+  }
+}
+.card {
+  border-radius: 15px;
+  width: 100%;
+  box-shadow: 5px 5px 5px gray;
+  &.effect:hover {
+    transform: scale(0.99);
+  }
+}
+.card-img-top {
+  border-radius: 15px 15px 0 0;
+}
+.card-body {
+  font-size: 20px;
+}
+tbody {
+  font-size: 1rem;
+  text-align: center;
+  @include tablettes {
+    font-size: 1rem;
+  }
+}
+
+.paiement {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-size {
+  min-width: 50px;
+  max-width: 200px;
+  padding: 5px;
+}
+
+.btn-sub {
+  display: flex;
+  justify-content: center;
+
+  &:active {
+    transform: scale(0.9);
+  }
+}
+.btn-primary {
+  padding: 10px;
+  border: solid gray;
+  box-shadow: 2px 2px 2px 2px gray;
+  font-family: $font-primary;
+  display: flex;
+  font-size: 1.5rem;
+  justify-content: center;
+  background-color: darken($color: white, $amount: 5%);
+  color: black !important;
+  font-weight: bold;
+  &:hover {
+    background-color: darken($color: white, $amount: 15%);
+    border-color: darken($color: gray, $amount: 10%);
+  }
+}
+
+.btn {
+  color: white;
+
+  transition: 200ms;
+
+  &:hover {
+    color: white;
+  }
+}
+.suppress-btn {
+  border: none;
+  background-color: white;
+  i {
+    font-size: 1rem;
+  }
+}
+
+.align-column {
+  display: flex;
+  flex-direction: column;
+}
+.align-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+//-------------------form properties-------------------
+.form-control:valid {
+  border-color: rgb(46, 46, 214);
+}
+
+.erreur-msg {
+  display: none;
+  color: rgb(221, 73, 73);
+
+  &.show {
+    display: block;
+  }
+}
+#submit {
+  border-radius: 15px;
+  display: block;
+  width: 300px;
+  height: 60px;
+  margin: 20px;
+  font-size: 1.2rem;
+  background-color: $color-primary;
+  color: white;
+  font-weight: bold;
+}

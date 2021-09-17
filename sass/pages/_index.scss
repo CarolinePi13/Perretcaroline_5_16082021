@@ -1,0 +1,21 @@
+.pres {
+  font-family: $font-primary;
+  h1 {
+    font-size: 2.5rem;
+    font-family: $font-primary;
+    @include tablettes {
+      font-size: 3.5rem;
+    }
+  }
+  p {
+    font-size: 1.5rem;
+    font-family: $font-primary;
+    @include tablettes {
+      font-size: 2.5rem;
+    }
+  }
+}
+.consulter {
+  display: flex;
+  justify-content: center;
+}
