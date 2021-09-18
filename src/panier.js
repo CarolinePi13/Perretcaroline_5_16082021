@@ -77,7 +77,7 @@ const addStorageToPage =()=>{
               <input type="hidden" name="productCode" value="${Item.IdArticle}">
             </td>
             <td>  
-              <button type="button" value="suppress" class="suppress-btn"><i class="fas fa-trash-alt"></i></button>
+              <button type="button" aria-label ="supprimer l'article" value="suppress" class="suppress-btn"><i class="fas fa-trash-alt"></i></button>
             </td>
           </tr>
         
