@@ -36,7 +36,7 @@ $font-primary: "latin_modern_mono_light10Bd", sans-serif;
 }
 
 @mixin tablettes {
-  @media (min-width: 660px) {
+  @media (min-width: 576px) {
     @content;
   }
 }

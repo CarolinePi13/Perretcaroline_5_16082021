@@ -47,18 +47,20 @@ const sousTotal =(a,b)=>{
         //--------------Integre l'affichage des artciles dans la page HTML----------
 const addStorageToPage =()=>{
 
-    let basketItems=getAllStorage();
+    
     if (basketItems.length>0){
       const allCartItems = basketItems.map(
           (Item)=>
           `
-          <tr>
-            <td scope="row">
-              <img src="${Item.ImgArticle}" class="img-fluid rounded-start img-size" alt="${Item.ImgArticle}">
-            </td>
-            <td><p class="card-title">${Item.NameArticle}</p></td>
-            <td>
-              <div class="CartItem-quantity">
+          <div class="cart">
+          <div class="cart_img_supp">
+            <div class="cart_img">
+                <img src="${Item.ImgArticle}" class="img-fluid rounded-start img-size" alt="${Item.ImgArticle}">
+            </div>
+            <div class="cart-middle">
+              <p class="card-title mt-3 mt-sm-0">${Item.NameArticle}</p>
+              <div class="CartItem-price--unit">${Item.PriceArticle} €</div>
+              <div class="CartItem-quantity mt-2 mt-sm-0">
                 <select  attr-rctcode="${Item.IdArticle} aria-label="quantité de l'article, selectionner une quantité pour la modifier">
 
                   <option id="selected"value="${Item.QuantiteArticle}" selected="selected">${Item.QuantiteArticle}</option>
@@ -68,18 +70,17 @@ const addStorageToPage =()=>{
                 
                 </select>
               </div>
-            </td>
-            <td>
-              <div class="CartItem-price--unit">${Item.PriceArticle} €</div>
-            </td>
-            <td>
-              <div class="CartItem-price--total">${sousTotal(parseInt(Item.PriceArticle),parseInt(Item.QuantiteArticle))}.00 €</div>
+            </div>
+            <button type="button" aria-label ="supprimer l'article" value="suppress" class="suppress-btn mt-5 mt-sm-0"><i class="fas fa-trash-alt"></i></button>
+          </div> 
+            
+          <div class="item-price">
+          
+              
               <input type="hidden" name="productCode" value="${Item.IdArticle}">
-            </td>
-            <td>  
-              <button type="button" aria-label ="supprimer l'article" value="suppress" class="suppress-btn"><i class="fas fa-trash-alt"></i></button>
-            </td>
-          </tr>
+            
+              
+          </div>
         
   
           `

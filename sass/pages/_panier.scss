@@ -28,19 +28,28 @@
   font-size: 0.7rem;
   border-spacing: 5px;
   text-align: center;
-  @include portable {
-    border-spacing: 5px 20px;
-    img {
-      display: none;
-    }
+  border-spacing: 5px 20px;
+  img {
+    width: 150px;
   }
+
   @include tablettes {
     font-size: 1rem;
+  }
+  @include desktop {
+    font-size: 1.3rem;
+    img {
+      width: 300px;
+    }
   }
 }
 .table {
   background-color: white;
   border-radius: 15px;
+  width: 96%;
+  @include desktop {
+    width: 70%;
+  }
 }
 .total-produit {
   @include tablettes {
@@ -78,7 +87,7 @@ tbody {
 
 .img-size {
   min-width: 50px;
-  max-width: 200px;
+  max-width: 300px;
   padding: 5px;
 }
 
@@ -121,6 +130,9 @@ tbody {
   background-color: white;
   i {
     font-size: 1rem;
+    @include desktop {
+      font-size: 1.5rem;
+    }
   }
 }
 
@@ -156,4 +168,39 @@ tbody {
   background-color: $color-primary;
   color: white;
   font-weight: bold;
+}
+.cart {
+  display: flex;
+  flex-direction: column;
+}
+.cart_img_supp {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  @include tablettes {
+    align-items: center;
+  }
+}
+.item-price {
+  display: flex;
+  justify-content: flex-end;
+}
+.cart-middle {
+  display: flex;
+  flex-direction: column;
+  @include tablettes {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10px;
+    flex: 1;
+  }
+}
+@include tablettes {
+  .card-title {
+    width: 33%;
+  }
+  .CartItem-price--unit {
+    width: 33%;
+  }
 }
