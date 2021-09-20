@@ -58,7 +58,7 @@ const addStorageToPage =()=>{
                 <img src="${Item.ImgArticle}" class="img-fluid rounded-start img-size" alt="${Item.ImgArticle}">
             </div>
             <div class="cart-middle">
-              <p class="card-title mt-3 mt-sm-0">${Item.NameArticle}</p>
+              <p class="card-title card-title--panier mt-3 mt-sm-0">${Item.NameArticle}</p>
               <div class="CartItem-price--unit">${Item.PriceArticle} €</div>
               <div class="CartItem-quantity mt-2 mt-sm-0">
                 <select id="select" aria-label="quantité de l'article, selectionner une quantité pour la modifier">

@@ -197,7 +197,7 @@ tbody {
   }
 }
 @include tablettes {
-  .card-title {
+  .card-title--panier {
     width: 33%;
   }
   .CartItem-price--unit {
