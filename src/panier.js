@@ -5,7 +5,7 @@
 
 const displayAnEmptyCart=()=>{
 
-  document.getElementById('actualiser').classList.add('btn--hidden');
+  
   const emptyCart=document.getElementById('CartTable').innerHTML =`
       <p class="empty-cart text-center">Oh! Votre panier est vide!</p>
       <i class="far fa-sad-tear"></i>
@@ -61,12 +61,12 @@ const addStorageToPage =()=>{
               <p class="card-title mt-3 mt-sm-0">${Item.NameArticle}</p>
               <div class="CartItem-price--unit">${Item.PriceArticle} €</div>
               <div class="CartItem-quantity mt-2 mt-sm-0">
-                <select  attr-rctcode="${Item.IdArticle} aria-label="quantité de l'article, selectionner une quantité pour la modifier">
+                <select id="select" aria-label="quantité de l'article, selectionner une quantité pour la modifier">
 
-                  <option id="selected"value="${Item.QuantiteArticle}" selected="selected">${Item.QuantiteArticle}</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
+                  <option id="selected" value="${Item.QuantiteArticle}" selected="selected">${Item.QuantiteArticle}</option>
+                  <option value="1" >1</option>
+                  <option value="2" >2</option>
+                  <option value="3" >3</option>
                 
                 </select>
               </div>
@@ -157,27 +157,38 @@ removeArticleFromCart();
 //----------------------------------changer la quantite du produit-------------------------------------------
 const changeQuantite=()=>{
 
-   document.getElementById('actualiser').addEventListener('click',()=>{
+  //  document.getElementById('actualiser').addEventListener('click',()=>{
 
-    let selectNewQuantite=Array.from(document.querySelectorAll('select'))
+    let selectNewQuantite=document.querySelectorAll("select");
     
       for (let i=0; i< basketItems.length; i++){
-        let newQuantite= parseInt(selectNewQuantite[i].value);
-        basketItems[i].QuantiteArticle=newQuantite;
-    
-    }
+        selectNewQuantite[i].addEventListener("change", (e)=>{
+          let newQuantite= parseInt(e.target.value);
+          basketItems[i].QuantiteArticle=newQuantite;
+      
+          localStorage.setItem("produit", JSON.stringify(basketItems));
+          
+          getAllStorage();
+          addStorageToPage();
+          getAllPrices();
+          displayNewTotal();
+          removeArticleFromCart();
+          changeQuantite();
+        }
+        
+        );
+       
+      
+      }
    
-  localStorage.setItem("produit", JSON.stringify(basketItems));
+     
 
-  getAllStorage();
-  addStorageToPage();
-  displayNewTotal();
-  removeArticleFromCart();
+ 
   
 }
-)
+// )
   
-}
+// }
 
 changeQuantite();
 
