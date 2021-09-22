@@ -157,13 +157,13 @@ removeArticleFromCart();
 //----------------------------------changer la quantite du produit-------------------------------------------
 const changeQuantite=()=>{
 
-  //  document.getElementById('actualiser').addEventListener('click',()=>{
+  
 
     let selectNewQuantite=document.querySelectorAll("select");
     
       for (let i=0; i< basketItems.length; i++){
         selectNewQuantite[i].addEventListener("change", (e)=>{
-          let newQuantite= parseInt(e.target.value);
+          let newQuantite= e.target.value;
           basketItems[i].QuantiteArticle=newQuantite;
       
           localStorage.setItem("produit", JSON.stringify(basketItems));
@@ -173,22 +173,13 @@ const changeQuantite=()=>{
           getAllPrices();
           displayNewTotal();
           removeArticleFromCart();
-          changeQuantite();
-        }
-        
-        );
-       
+          
+        });  
       
       }
-   
-     
-
- 
-  
+      changeQuantite();
 }
-// )
-  
-// }
+
 
 changeQuantite();
 
